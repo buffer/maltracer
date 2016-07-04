@@ -41,14 +41,14 @@ class Maltracer(object):
         if not os.access(DUMP_DIR, os.F_OK):
             try:
                 os.makedirs(DUMP_DIR)
-            except: 
+            except: #pylint:disable=bare-except 
                 sys.exit(0)
 
         self.dumpdir = "%s\\%s" % (DUMP_DIR, str(timestamp))
         if not os.access(self.dumpdir, os.F_OK):
             try:
                 os.makedirs(self.dumpdir)
-            except:
+            except: #pylint:disable=bare-except
                 sys.exit(0)
 
     def open_process(self, pid):
@@ -112,7 +112,7 @@ class Maltracer(object):
                             if not os.access(d, os.F_OK):
                                 try:
                                     os.makedirs(d)
-                                except:
+                                except: #pylint:disable=bare-except
                                     sys.exit(0)
                             fd = open("%s\\%s-0x%.8x.dmp" % (d, regexp, mem,), 'wb')
                             fd.write(buf.raw)
