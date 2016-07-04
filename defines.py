@@ -183,7 +183,7 @@ class DEBUG_EVENT(Structure):
 
 # Used by the CONTEXT structure
 class FLOATING_SAVE_AREA(Structure):
-   _fields_ = [
+    _fields_ = [
 
         ("ControlWord", DWORD),
         ("StatusWord", DWORD),
