@@ -18,14 +18,14 @@
 
 from ctypes import *
 from defines import *
-import sys, os, re, time, datetime
+import sys, os, time, datetime
 
 kernel32 = windll.kernel32
 psapi    = windll.psapi
 
-DUMP_DIR="output"
+DUMP_DIR = "output"
 
-class Maltracer:
+class Maltracer(object):
     def __init__(self):
         pass
 
@@ -41,7 +41,7 @@ class Maltracer:
         if not os.access(DUMP_DIR, os.F_OK):
             try:
                 os.makedirs(DUMP_DIR)
-            except:
+            except: 
                 sys.exit(0)
 
         self.dumpdir = "%s\\%s" % (DUMP_DIR, str(timestamp))
@@ -136,7 +136,6 @@ class Maltracer:
         psapi.EnumProcesses(byref(aProcesses), cb, byref(cbNeeded))
         nReturned = cbNeeded.value / sizeof(c_ulong)
 
-        i = 0
         pids = [i for i in aProcesses][:nReturned]
         return pids
 
@@ -168,7 +167,7 @@ class Maltracer:
         maltracer_pid = kernel32.GetCurrentProcessId()
         print "[*] Maltracer started (PID %d)" % (maltracer_pid, )
         self.run_iexplore()
-        pids = self.enumerate_processes()
+        #pids = self.enumerate_processes()
         self.get_system_info()
 
         #for pid in pids:

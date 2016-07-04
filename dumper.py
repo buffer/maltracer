@@ -19,7 +19,6 @@
 
 from ctypes import *
 from defines import *
-import sys
 
 kernel32 = windll.kernel32
 
@@ -44,13 +43,13 @@ class Dumper:
 
     def dump_mem(self):
         page_size = self.system_info.dwPageSize
-        max_addr  = self.system_info.lpMaximumApplicationAddress
-        min_addr  = self.system_info.lpMinimumApplicationAddress
+        #max_addr  = self.system_info.lpMaximumApplicationAddress
+        #min_addr  = self.system_info.lpMinimumApplicationAddress
         mem       = self.low_addr
         data      = ""
 
         while (mem < self.hi_addr):
-            mbi   = MEMORY_BASIC_INFORMATION()
+            #mbi   = MEMORY_BASIC_INFORMATION()
             buf   = create_string_buffer(page_size)
             count = c_ulong(0)
 
