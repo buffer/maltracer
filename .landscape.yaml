@@ -1,0 +1,7 @@
+strictness: medium
+autodetect: yes
+
+pylint:
+  disable:
+    - protected-access
+    - unused-wildcard-import
