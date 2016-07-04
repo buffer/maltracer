@@ -22,7 +22,7 @@ from defines import *
 
 kernel32 = windll.kernel32
 
-class Dumper:
+class Dumper(object):
     def __init__(self, pid, low_addr, hi_addr):
         self.pid      = pid
         self.low_addr = low_addr
